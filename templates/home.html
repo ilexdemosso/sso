@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head>
+        <title>Demo sso</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header center">
+            <h1><a href="/sso">Demo sso</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-16">
+                    <form action = "/sso/authorize" method = "post"> 
+                        {% csrf_token %} 
+                        {{form }} 
+                        <input type="submit" value="Submit"> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
