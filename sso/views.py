@@ -10,9 +10,10 @@ import os
 
 def login(request):
     access_token = request.COOKIES.get('access_token')
+    redirect_url = f'https://consplusweb-dev:8097/login?client_id=test&redirect_url=http:%2F%2F{os.environ["DEMO_ENDPOINT"]}/authorize'
 
     if not access_token:
-        return redirect("https://consplusweb-dev:8097/login?client_id=test&redirect_url=http:%2F%2Flocalhost:8000/authorize")
+        return redirect(redirect_url)
     else:
         public_key_path = os.path.join(
             os.path.dirname(
@@ -26,7 +27,7 @@ def login(request):
             context = {'first_name': payload['first_name'], 'last_name': payload['last_name']}
             return render(request, 'authorized.html', context)
         except jwt.ExpiredSignatureError:
-            return redirect("https://consplusweb-dev:8097/login?client_id=test&redirect_url=http:%2F%2Flocalhost:8000/authorize")
+            return redirect(redirect_url)
         except jwt.DecodeError:
             return redirect('/error')
 
