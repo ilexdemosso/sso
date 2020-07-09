@@ -8,17 +8,13 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-        <div class="page-header center">
-            <h1><a href="/sso">Demo sso</a></h1>
+        <div class="page-header text-center">
+            <h1><a href="/">Demo sso</a></h1>
         </div>
         <div class="content container">
             <div class="row">
-                <div class="col-md-16">
-                    <form action = "/sso/authorize" method = "post"> 
-                        {% csrf_token %} 
-                        {{form }} 
-                        <input type="submit" value="Submit"> 
-                    </form>
+                <div class="col-md-16 text-center">
+                    <h3>Welcome! You are {{first_name}} {{last_name}}</h3>
                 </div>
             </div>
         </div>
